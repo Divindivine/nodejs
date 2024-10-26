@@ -27,7 +27,28 @@ router
     res.send(`Delete the user with the id: ${req.params.id}`);
   });
 
-const users = [{ name: "Kyle" }, { name: "Jenner" }];
+const users = [
+  { name: "Cristiano" },
+  { name: "Messi" },
+  { name: "Neyamar" },
+  { name: "Mbappe" },
+  { name: "Debruyne" },
+  { name: "Vinisius" },
+  { name: "Odegaard" },
+  { name: "Modric" },
+  { name: "Ruminigge" },
+  { name: "Delpeiro" },
+  { name: "Lampard" },
+  { name: "Gerrard" },
+  { name: "Viera" },
+  { name: "Maldini" },
+  { name: "Bechanbauer" },
+  { name: "Carlos" },
+  { name: "Arnold" },
+  { name: "Guti" },
+  { name: "Becham" },
+  { name: "Divin" },
+];
 
 router.param((req, res, next, id) => {
   req.user = users[id];
