@@ -1,5 +1,6 @@
 const express = require("express");
-const studentRoutes = require("./src/student/routes");
+const studentRoutes = require("./src/student/studentRoutes");
+const staffRoutes = require("./src/staff/staffRoutes");
 const app = express();
 const port = 3000;
 
@@ -13,4 +14,5 @@ app.get("/", (req, res) => {
   res.send("gotchaa");
 });
 
-app.use("/api/v1/students", studentRoutes);
+app.use("/students", studentRoutes);
+app.use("/staffs", staffRoutes);
