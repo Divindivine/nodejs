@@ -1,13 +1,5 @@
-const { response } = require("express");
 const pool = require("../../database");
 const queries = require("./query");
-
-const getUsers = (request, response) => {
-  pool.query(queries.getUsers, (error, result) => {
-    if (error) throw error;
-    response.send(result.rows);
-  });
-};
 
 const getUserByID = (request, response) => {
   const id = request.params.user_id;
@@ -60,27 +52,18 @@ const updateUserDetails = (request, response) => {
   });
 };
 
-const removeUser = (request, response) => {
-  const id = request.params.user_id;
-  pool.query(queries.getUserByID, [id], (error, result) => {
+const addOrders = (request, response) => {
+  const userId = request.params.user_id;
+  const productId = request.params.product_id;
+  pool.query(queries.addOrders, [userId, productId], (error, result) => {
     if (error) throw error;
-    if (!result.rows.length) {
-      response.send(`no user with id: ${id}`);
-      return;
-    }
-    pool.query(queries.removeUser, [id], (error, result) => {
-      if (error) throw error;
-      response.send(
-        `user with id: ${id} has removed successfully from the database`
-      );
-    });
+    response.send(`order added succesfully`);
   });
 };
 
 module.exports = {
-  getUsers,
   getUserByID,
   addUser,
   updateUserDetails,
-  removeUser,
+  addOrders,
 };

@@ -5,8 +5,8 @@ const checkProductExist =
 const addProduct =
   "insert into products (product_name, price, stock) values ($1, $2, $3)";
 const editProductDetails =
-  "update products set product_name = $1, price = $2, stock = $3 where product.product_id = $4";
-const removeProduct = "delete from products where product.product_id = $1";
+  "update products set product_name = $1, price = $2, stock = $3 where products.product_id = $4";
+const removeProduct = "delete from products where products.product_id = $1";
 
 module.exports = {
   getProducts,
